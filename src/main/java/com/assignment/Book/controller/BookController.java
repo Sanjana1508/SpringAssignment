@@ -51,7 +51,7 @@ public class BookController {
 	}
 	
 	@PostMapping("/save")
-	public String saveEmployee(@ModelAttribute("book") Book theBook) {
+	public String saveBook(@ModelAttribute("book") Book theBook) {
 		
 		bookService.save(theBook);
 		
