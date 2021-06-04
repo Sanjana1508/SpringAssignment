@@ -14,23 +14,15 @@ public class BookServiceImpl implements BookService {
 
 	private BookDAO bookDAO;
 
-	//private BookRepository bookRepository;
-
-	
 	@Autowired
 	public BookServiceImpl(BookDAO bookDAO) {
 		this.bookDAO=bookDAO;
 	}
 	
-	/*@Autowired
-	public BookServiceImpl(BookRepository bookRepository) {
-		this.bookRepository=bookRepository;
-	}*/
-	
 	@Override
 	@Transactional
 	public List<Book> findAll() {
-		//return bookRepository.findAll();
+		
 		return bookDAO.findAll();
 	}
 
@@ -38,31 +30,20 @@ public class BookServiceImpl implements BookService {
 	@Transactional
 	public Book findById(int theId) {
 		
-		/*Optional<Book> result = bookRepository.findById(theId);
-		Book theBook = null;
-		if(result.isPresent()) {
-			theBook= result.get();
-		}
-		else {
-			throw new RuntimeException("Book id not found : "+theId);
-		}
-		return theBook;*/
-		
 		return bookDAO.findById(theId);
 	}
 
 	@Override
 	@Transactional
 	public void save(Book theBook) {
-		//return bookRepository.save(theBook);
+		
 		bookDAO.save(theBook);
 	}
 
 	@Override
 	@Transactional
 	public void deleteById(int theId) {
-		//return deleteById(theId);
-		bookDAO.deleteById(theId);
-	}
+		
+		bookDAO.deleteById(theId);	}
 
 }
